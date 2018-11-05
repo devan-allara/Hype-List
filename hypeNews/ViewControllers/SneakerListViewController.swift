@@ -33,7 +33,8 @@ class SneakerListViewController: UIViewController, UITableViewDelegate, UITableV
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "sneakerCell") as! SneakerTableViewCell
         cell.setUpCell(sneaker: SneakerManager.sharedInstance.getSneaker(at: indexPath.row))
-        let tap = UITapGestureRecognizer(target: self, action: Selector(("brandTapped")))
+        cell.brandLabel.isUserInteractionEnabled = true
+        let tap = UITapGestureRecognizer(target: self, action: Selector("brandTapped"))
         cell.brandLabel.addGestureRecognizer(tap)
         
         return cell
@@ -43,18 +44,18 @@ class SneakerListViewController: UIViewController, UITableViewDelegate, UITableV
         return 700;
     }
 
-    func brandTapped(sender: UITapGestureRecognizer){
+    func brandTapped(sneaker: Sneaker){
         print("hi")
         self.performSegue(withIdentifier: "showSneakerDetail", sender: self)
-        let brandLabel = sender as! UILabel
-        if brandLabel.text == "Yeezy"{
-            selectedBrand = Brand(name: "Yeezy", image: #imageLiteral(resourceName: "yeezy"), followers: 92234)
-        } else if brandLabel.text == "Adidas" {
-            selectedBrand = Brand(name: "Adidas", image: #imageLiteral(resourceName: "adidas"), followers: 23352)
-        } else {
-            selectedBrand = Brand(name: "Off---White", image: #imageLiteral(resourceName: "ow"), followers: 41313)
-        }
-        self.performSegue(withIdentifier: "showBrandProfile", sender: self)
+//        let brandLabel = sender as! UILabel
+//        if brandLabel.text == "Yeezy"{
+//            selectedBrand = Brand(name: "Yeezy", image: #imageLiteral(resourceName: "yeezy"), followers: 92234)
+//        } else if brandLabel.text == "Adidas" {
+//            selectedBrand = Brand(name: "Adidas", image: #imageLiteral(resourceName: "adidas"), followers: 23352)
+//        } else {
+//            selectedBrand = Brand(name: "Off---White", image: #imageLiteral(resourceName: "ow"), followers: 41313)
+//        }
+//        self.performSegue(withIdentifier: "showBrandProfile", sender: self)
         
     }
 
