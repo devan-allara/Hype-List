@@ -11,8 +11,7 @@ import UIKit
 class SneakerListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     //MARK: Interface elements
-    @IBOutlet weak var tableView: UITableView!
-    
+ 
     var selectedSneaker: Sneaker!
     var selectedBrand: Brand!
     
@@ -43,6 +42,8 @@ class SneakerListViewController: UIViewController, UITableViewDelegate, UITableV
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 700;
     }
+    
+    
 
     func brandTapped(sneaker: Sneaker){
         print("hi")
